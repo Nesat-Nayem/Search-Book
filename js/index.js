@@ -7,13 +7,13 @@ const searchFood = () => {
    
     console.log(searchText);
 
-    const url = `http://openlibrary.org/search.json?q=${searchText}`
+    const url = `https://openlibrary.org/search.json?q=${searchText}`
 
 
     fetch(url)
     .then(Response => Response.json())
     .then(data => displayBook(data.docs))
-    console.log(data);
+   
 
 
 }
