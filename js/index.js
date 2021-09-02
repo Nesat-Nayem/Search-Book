@@ -1,10 +1,15 @@
+// Error handling
+const errorMsg = document.getElementById('error')
 
 // search results
 
 const searchFood = () => {  
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-   
+   if(searchText === ''){
+    errorMsg.innerText = 'search field cannot be empty'
+    return;
+   }
     console.log(searchText);
 
     const url = `https://openlibrary.org/search.json?q=${searchText}`
@@ -13,12 +18,7 @@ const searchFood = () => {
     fetch(url)
     .then(Response => Response.json())
     .then(data => displayBook(data.docs))
-   
-
-
-}
-
-
+   }
 
 const displayBook =(books) =>{
     const searchResult = document.getElementById('search-result')
@@ -40,8 +40,6 @@ const displayBook =(books) =>{
         </div>
       </div>
         
-
-      
         `
         searchResult.appendChild(div)
         
