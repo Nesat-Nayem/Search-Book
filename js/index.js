@@ -1,8 +1,13 @@
 // Error handling
 const errorMsg = document.getElementById('error')
 
-// search results
+// toggle spinner
 
+const toggleSpinner = displayStyle =>{
+  document.getElementById('spinnar').style.display = displayStyle
+}
+
+// search results
 const searchFood = () => {  
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
@@ -11,6 +16,9 @@ const searchFood = () => {
     return;
    }
     console.log(searchText);
+ 
+    // showing spinner
+    toggleSpinner('block');
 
     const url = `https://openlibrary.org/search.json?q=${searchText}`
 
@@ -43,5 +51,6 @@ const displayBook =(books) =>{
         `
         searchResult.appendChild(div)
         
-    })
+    });
+    toggleSpinner('none');
 } 
